@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.5" />
+    <title>Happy Birthday Zahra!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Roboto&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+      .sour-gummy-light {
+        font-family: "Sour Gummy", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 300;
+        font-style: normal;
+        font-variation-settings: "wdth"100;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Sour Gummy", sans-serif;
+        background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+        color: #3e1f2b;
+        overflow-x: hidden;
+        transition: background 2s ease;
+      }
+
+      header {
+        text-align: center;
+        padding: 5rem 1rem 2rem;
+        font-family: 'Playfair Display', serif;
+      }
+
+      header h1 {
+        font-size: 3rem;
+        color: #a40034;
+        margin-bottom: 0.5rem;
+        animation: fadeInDown 1.5s ease-in-out;
+      }
+
+      header p {
+        font-size: 1.25rem;
+        color: #5c2c3c;
+        animation: fadeInUp 2s ease-in-out;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        padding: 2rem;
+        max-width: 1200px;
+        margin: auto;
+        animation: fadeIn 2.5s ease-in-out;
+      }
+
+      .gallery img {
+        width: 100%;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        transition: transform 0.5s ease;
+      }
+
+      .gallery img:hover {
+        transform: scale(1.05);
+      }
+
+      .button-container {
+        text-align: center;
+        margin: 1rem auto 3rem;
+      }
+
+      .custom-button {
+        background-color: #a40034;
+        color: white;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 35px;
+        text-decoration: none;
+        font-size: 0.7rem;
+        font-family: "Sour Gummy", sans-serif;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: transform 0.15s ease, background 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .custom-button:hover {
+        background-color: #c10042;
+        transform: scale(1.03);
+        box-shadow: 0 0 20px #ffb6c1, 0 0 40px #ffb6c1;
+      }
+
+      .custom-button:active {
+        transform: scale(0.95);
+      }
+
+      .message {
+        width: calc(100% - 2rem);
+        max-width: 800px;
+        margin: 3rem auto;
+        padding: 2rem;
+        background: #fff0f5;
+        border-radius: 20px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        text-align: justify;
+        font-size: 1.2rem;
+        line-height: 1.8;
+        animation: fadeIn 3s ease-in-out;
+        box-sizing: border-box;
+      }
+
+      footer {
+        text-align: center;
+        padding: 2rem;
+        font-size: 0.9rem;
+        color: #6a3a4e;
+      }
+
+      audio {
+        display: none;
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .message {
+          width: calc(100% - 2rem);
+          margin: 2rem 1rem;
+          padding: 1.5rem;
+          box-sizing: border-box;
+        }
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  </head>
+  <body>
+    <audio id="bgm" preload="auto" loop>
+      <source src="mp3/backsong.mp3" type="audio/mp3">
+    </audio>
+    <script>
+      const audio = document.getElementById('bgm');
+      let hasTried = false;
+      async function tryPlayAudio(event) {
+        if (hasTried) return;
+        hasTried = true;
+        try {
+          await audio.play();
+          console.log("Audio started");
+          removeListeners();
+        } catch (err) {
+          console.warn("Playback failed, will try again on next gesture.");
+          hasTried = false;
+        }
+      }
+
+      function removeListeners() {
+        document.removeEventListener('pointerdown', tryPlayAudio);
+        document.removeEventListener('touchstart', tryPlayAudio);
+        document.removeEventListener('scroll', tryPlayAudio);
+        document.removeEventListener('click', tryPlayAudio);
+      }
+      document.addEventListener('pointerdown', tryPlayAudio);
+      document.addEventListener('touchstart', tryPlayAudio);
+      document.addEventListener('scroll', tryPlayAudio, {
+        passive: true
+      });
+      document.addEventListener('click', tryPlayAudio);
+    </script>
+    <header>
+      <h1>Happy Birthday <br>Qisti Nur Aulia Zahra! </h1>
+      <p>Semogaa harii inii dan seterusnyaa kamuu tetapp bahagia:D</p>
+    </header>
+    <section class="gallery">
+      <img src="img/cakep5.png" alt="Cewe Cakep">
+      <img src="img/cakep8.png" alt="Cewe Cakep">
+      <img src="img/cakep10.png" alt="Cewe Cakep">
+      <img src="img/cakep11.png" alt="Cewe Cakep">
+      <img src="img/cakep13.png" alt="Cewe Cakep">
+      <img src="img/cakep14.png" alt="Cewe Cakep">
+    </section>
+    <div class="button-container">
+      <a href="https://example.com" target="_blank" class="custom-button">Placeholder</a>
+    </div>
+    <section class="message">
+      <p> HBD SAYAANGGKUU, semogaa kamuu sehatt selaluu, dilancarkann rezekinyaa, panjangg umurr, dann dimudahkann segalaa urusannyaaa. geloo pacarrkuu udaa umur 18 nii, udaa tuaa tuh wkwkwkw. akuu banggaa samaa kamuu sayangg, kamuu bisaa bertahann selamaa inii. kamuu kuatt bngtt, bahkann kamuu jarangg ngeluhh kee akuu. terimaa kasihh sudaa bertahann sejauh inii sayaanggkuuu. terimaa kasihh jugaa sudaaa bertahann samaa akuu sejauhh inii, semogaa hubungannn kitaaa langgengg teruss yaaa sayaangg:D. kamuu hebatt sayaang, kamuu kuatt, kamuu kerennn. akuu banggaa punyaa pacarr kayaa kamuu hehehe. happyy birthdayy sayaanggkuu:D </p>
+    </section>
+    <footer> Made by your lovely boyfriend, just for you. </footer>
+    <script>
+      window.addEventListener('load', () => {
+        const duration = 5 * 1000;
+        const animationEnd = Date.now() + duration;
+        const defaults = {
+          startVelocity: 30,
+          spread: 360,
+          ticks: 60,
+          zIndex: 1000
+        };
+
+        function randomInRange(min, max) {
+          return Math.random() * (max - min) + min;
+        }
+        const interval = setInterval(() => {
+          const timeLeft = animationEnd - Date.now();
+          if (timeLeft <= 0) {
+            return clearInterval(interval);
+          }
+          const particleCount = 50 * (timeLeft / duration);
+          confetti({
+            ...defaults,
+            particleCount,
+            origin: {
+              x: randomInRange(0.1, 0.9),
+              y: Math.random() - 0.2
+            }
+          });
+        }, 250);
+      });
+    </script>
+  </body>
+</html>
