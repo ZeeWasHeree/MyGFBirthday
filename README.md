@@ -5,3 +5,4 @@
 * Terdapat confetti saat web dibuka
 * Terdapat beberapa foto
 * Disertai dengan music di background
+* File ter-obfuscate karena.. gapapa sih hehe
